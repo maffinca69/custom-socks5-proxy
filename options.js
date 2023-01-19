@@ -1,14 +1,15 @@
 import {getDomains} from "./API.js";
 import {registerProxyConfig} from "./common.js";
 
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.sync.get(['proxy_url', 'domain_list_url']).then(settings => handlerPreloadValues(settings));
-
-    const saveButton = document.getElementById('save');
-    saveButton.addEventListener('click', e => clickSaveButtonListener(e))
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        clickSaveButtonListener()
+    })
 });
 
-const clickSaveButtonListener = async e => {
+const clickSaveButtonListener = async () => {
     let domains = []
     const proxy = document.getElementById('proxy').value
     const domainsUrl = document.getElementById('domainsUrl').value
