@@ -1,0 +1,126 @@
+:root {
+    --background-color: #ffe5e5;
+    --color: #000;
+    --feedback-bg-color: #fff;
+    --feedback-secondary-color: #ffacac;
+    --feedback-primary-color: #53488d;
+    --feedback-icon-color: #fff;
+    --feedback-form-input: #f4f4f4;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--feedback-primary-color);
+    font-family: 'Poppins', sans-serif;
+    color: var(--background-color);
+}
+
+.form {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+}
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--background-color);
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 7px 0;
+    color: #fff;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--background-color);
+}
+
+.form__hint {
+    margin-top: 4px;
+    transition: 0.2s;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--feedback-secondary-color), var(--background-color));
+    border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--feedback-secondary-color);
+}
+
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}
+
+.form__submit {
+    margin-top: 25px;
+    display: grid;
+    width: 100%;
+    place-content: center;
+    padding: 10px 30px;
+    border: 1px solid #000;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: var(--feedback-secondary-color);
+    color: var(--feedback-primary-color);
+    transition: all 0.3s;
+}
+
+.form__submit:hover, .form__submit:focus {
+    color: var(--feedback-primary-color);
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffacac' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: animatedBackground 20s linear infinite alternate;
+}
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
